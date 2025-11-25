@@ -286,7 +286,25 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
   }
 
   Widget _buildDatePicker() {
-    return Card(
+    return Container(
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color(0xFFF8F7FC),
+            Colors.white,
+          ],
+        ),
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
       child: InkWell(
         onTap: _selectDate,
         borderRadius: BorderRadius.circular(16),
@@ -340,7 +358,25 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
   }
 
   Widget _buildBudgetInput() {
-    return Card(
+    return Container(
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color(0xFFF8F7FC),
+            Colors.white,
+          ],
+        ),
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -352,12 +388,12 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
                   width: 56,
                   height: 56,
                   decoration: BoxDecoration(
-                    color: Colors.green.withOpacity(0.1),
+                    color: Colors.cyan.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Icon(
+                  child: Icon(
                     Icons.attach_money,
-                    color: Colors.green,
+                    color: Colors.cyan.shade700,
                     size: 28,
                   ),
                 ),
@@ -401,7 +437,7 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
                 'Remaining: \$${(_targetCost - _calculateTotal()).toStringAsFixed(2)}',
                 style: TextStyle(
                   fontSize: 16,
-                  color: _calculateTotal() > _targetCost ? Colors.red : Colors.green,
+                  color: _calculateTotal() > _targetCost ? Colors.red : Colors.cyan.shade700,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -419,10 +455,26 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
         final canSelect = _canSelectItem(item);
         final isDisabled = !canSelect && !isSelected;
 
-        return Card(
+        return Container(
           margin: const EdgeInsets.only(bottom: 16),
-          elevation: isDisabled ? 1 : 2,
-          color: Colors.white,
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color(0xFFF8F7FC),
+                Colors.white,
+              ],
+            ),
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.08),
+                blurRadius: isDisabled ? 4 : 8,
+                offset: const Offset(0, 2),
+              ),
+            ],
+          ),
           child: CheckboxListTile(
             value: isSelected,
             onChanged: isDisabled ? null : (checked) => _onItemToggled(item, checked),
@@ -442,7 +494,7 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
                 '\$${item.cost.toStringAsFixed(2)}',
                 style: TextStyle(
                   fontSize: 18,
-                  color: isDisabled ? Colors.grey.shade400 : Colors.green.shade700,
+                  color: isDisabled ? Colors.grey.shade400 : Colors.cyan.shade700,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -485,7 +537,7 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
                   minHeight: 8,
                   backgroundColor: Colors.grey.shade200,
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    isOverBudget ? Colors.red : Colors.green,
+                    isOverBudget ? Colors.red : Colors.cyan,
                   ),
                 ),
               ),

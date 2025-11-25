@@ -29,7 +29,7 @@ class _ViewOrdersScreenState extends State<ViewOrdersScreen> {
         return Theme(
           data: Theme.of(context).copyWith(
             colorScheme: ColorScheme.light(
-              primary: Colors.blue,
+              primary: Colors.deepPurple,
               onPrimary: Colors.white,
               surface: Colors.white,
               onSurface: Colors.black,
@@ -152,7 +152,7 @@ class _ViewOrdersScreenState extends State<ViewOrdersScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('View Order Plans'),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.deepPurple,
         foregroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
@@ -184,8 +184,25 @@ class _ViewOrdersScreenState extends State<ViewOrdersScreen> {
   }
 
   Widget _buildDatePicker() {
-    return Card(
-      elevation: 2,
+    return Container(
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color(0xFFF8F7FC),
+            Colors.white,
+          ],
+        ),
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
       child: InkWell(
         onTap: _selectDate,
         borderRadius: BorderRadius.circular(16),
@@ -196,13 +213,13 @@ class _ViewOrdersScreenState extends State<ViewOrdersScreen> {
               Container(
                 width: 56,
                 height: 56,
-                decoration: BoxDecoration(
-                  color: Colors.blue.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(12),
+                decoration: const BoxDecoration(
+                  color: Color(0xFFF3E5F5),
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
                 ),
                 child: const Icon(
                   Icons.calendar_today,
-                  color: Colors.blue,
+                  color: Colors.deepPurple,
                   size: 28,
                 ),
               ),
@@ -244,7 +261,7 @@ class _ViewOrdersScreenState extends State<ViewOrdersScreen> {
       child: ElevatedButton(
         onPressed: _isLoading ? null : _searchOrders,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.deepPurple,
           foregroundColor: Colors.white,
           padding: const EdgeInsets.symmetric(vertical: 18),
           shape: RoundedRectangleBorder(
@@ -398,9 +415,26 @@ class _ViewOrdersScreenState extends State<ViewOrdersScreen> {
   }
 
   Widget _buildFoodItem(OrderPlan order) {
-    return Card(
+    return Container(
       margin: const EdgeInsets.only(bottom: 16),
-      elevation: 2,
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color(0xFFF8F7FC),
+            Colors.white,
+          ],
+        ),
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Row(
@@ -422,7 +456,7 @@ class _ViewOrdersScreenState extends State<ViewOrdersScreen> {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: Colors.green.shade700,
+                      color: Colors.cyan.shade700,
                     ),
                   ),
                 ],
@@ -438,15 +472,15 @@ class _ViewOrdersScreenState extends State<ViewOrdersScreen> {
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           colors: [
-            Colors.blue.shade50,
-            Colors.green.shade50,
+            Color(0xFFF3E5F5),
+            Color(0xFFE1F5FE),
           ],
         ),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: Colors.blue.withOpacity(0.2),
+          color: Colors.deepPurple.withOpacity(0.2),
           width: 2,
         ),
       ),
@@ -461,7 +495,7 @@ class _ViewOrdersScreenState extends State<ViewOrdersScreen> {
           _buildSummaryRow(
             'Total Cost:',
             '\$${totalCost.toStringAsFixed(2)}',
-            Colors.blue.shade700,
+            Colors.deepPurple,
             isTotal: true,
           ),
           const SizedBox(height: 12),
@@ -476,7 +510,7 @@ class _ViewOrdersScreenState extends State<ViewOrdersScreen> {
           _buildSummaryRow(
             'Remaining:',
             '\$${remaining.toStringAsFixed(2)}',
-            Colors.green.shade700,
+            Colors.cyan.shade700,
             isBold: true,
           ),
         ],
