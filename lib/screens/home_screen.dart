@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../database/database_helper.dart';
 import 'create_order_screen.dart';
 import 'view_orders_screen.dart';
+import 'manage_food_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -239,12 +240,7 @@ class _HomeScreenState extends State<HomeScreen> {
           title: 'Manage Food Items',
           description: 'Add, edit, or delete food items',
           color: Colors.purple,
-          onTap: () {
-            // TODO: Navigate to Manage Food screen
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Manage Food - Coming Soon!')),
-            );
-          },
+          onTap: () => _navigateAndReload(const ManageFoodScreen()),
         ),
       ],
     );
