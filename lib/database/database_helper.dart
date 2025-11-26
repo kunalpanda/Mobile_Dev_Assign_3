@@ -73,56 +73,6 @@ class DatabaseHelper {
         FOREIGN KEY (foodItemId) REFERENCES food_items(id) ON DELETE CASCADE
       )
     ''');
-
-    // Seed initial data with 20+ food items
-    await _seedInitialData(db);
-  }
-
-  /// Seed the database with initial food items
-  /// Only called during database creation
-  Future<void> _seedInitialData(Database db) async {
-    // List of 25 diverse food items across different categories
-    final List<Map<String, dynamic>> initialFoodItems = [
-      // Breakfast Items
-      {'name': 'Pancakes with Syrup', 'cost': 8.99},
-      {'name': 'Eggs Benedict', 'cost': 12.50},
-      {'name': 'Avocado Toast', 'cost': 9.99},
-      {'name': 'Breakfast Burrito', 'cost': 10.50},
-      {'name': 'French Toast', 'cost': 8.50},
-      
-      // Lunch Items
-      {'name': 'Caesar Salad', 'cost': 11.99},
-      {'name': 'Club Sandwich', 'cost': 10.99},
-      {'name': 'Chicken Wrap', 'cost': 9.50},
-      {'name': 'Tomato Soup & Grilled Cheese', 'cost': 12.00},
-      {'name': 'Greek Salad', 'cost': 10.50},
-      
-      // Dinner Items
-      {'name': 'Pepperoni Pizza', 'cost': 14.99},
-      {'name': 'Cheeseburger & Fries', 'cost': 13.50},
-      {'name': 'Grilled Salmon', 'cost': 18.99},
-      {'name': 'Chicken Alfredo Pasta', 'cost': 15.50},
-      {'name': 'Beef Tacos (3pc)', 'cost': 11.99},
-      {'name': 'Vegetable Stir Fry', 'cost': 12.99},
-      {'name': 'BBQ Ribs', 'cost': 19.99},
-      
-      // Snacks
-      {'name': 'French Fries', 'cost': 4.99},
-      {'name': 'Onion Rings', 'cost': 5.50},
-      {'name': 'Chicken Wings (6pc)', 'cost': 9.99},
-      {'name': 'Mozzarella Sticks', 'cost': 6.99},
-      
-      // Desserts
-      {'name': 'Chocolate Cake', 'cost': 6.50},
-      {'name': 'Ice Cream Sundae', 'cost': 5.99},
-      {'name': 'Apple Pie', 'cost': 5.50},
-      {'name': 'Cheesecake', 'cost': 7.50},
-    ];
-
-    // Insert all food items
-    for (var item in initialFoodItems) {
-      await db.insert('food_items', item);
-    }
   }
 
   // ==================== FOOD ITEM CRUD OPERATIONS ====================
